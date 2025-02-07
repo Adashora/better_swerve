@@ -4,6 +4,13 @@
 
 package frc.robot;
 
+import edu.wpi.first.math.geometry.Rotation2d;
+import edu.wpi.first.math.geometry.Translation2d;
+import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
+import edu.wpi.first.math.util.Units;
+import edu.wpi.first.units.Unit;
+import frc.robot.subsystems.Swerve_module;
+
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide numerical or boolean
  * constants. This class should not be used for any other purpose. All constants should be declared
@@ -14,8 +21,69 @@ package frc.robot;
  */
 public final class Constants {
 
+public static final double robot_length = Units.inchesToMeters(25);
+public static final double robot_width = Units.inchesToMeters(25);
 
-  public class dt{
+public static final Translation2d front_right = new Translation2d(robot_length/2, -robot_width/2);
+public static final Translation2d front_left = new Translation2d(robot_length/2, robot_width/2);
+public static final Translation2d back_right = new Translation2d(-robot_length/2, -robot_width/2);
+public static final Translation2d back_left =  new Translation2d(-robot_length/2, robot_width/2);
+
+
+
+
+
+public static final SwerveDriveKinematics Swerve_map = new SwerveDriveKinematics(
+  front_right,
+  back_right,
+  back_left,
+  front_left
+ );
+
+
+
+  
+
+  public final class dt{
+    
+
+    public class Module_0{
+      
+      public static final int module_number = 0;
+      public static final int drive_id = 0;
+      public static final int turn_id = 0;
+      public static final int Cancoder_id = 0;
+      public static final Rotation2d turn_offset = Rotation2d.fromDegrees(0);
+
+    }
+    public class Module_1{
+      public static final int module_number = 1;
+      public static final int drive_id = 0;
+      public static final int turn_id = 0;
+      public static final int Cancoder_id = 0;
+      public static final Rotation2d turn_offset = Rotation2d.fromDegrees(0);
+
+    }
+    public class Module_2{
+      public static final int module_number = 2;
+      public static final int drive_id = 0;
+      public static final int turn_id = 1;
+      public static final int Cancoder_id = 0;
+      public static final Rotation2d turn_offset = Rotation2d.fromDegrees(0.0);
+
+    }
+    public class Module_3{
+      
+      public static final int module_number = 3;
+      public static final int drive_id = 0;
+      public static final int turn_id = 0;
+      public static final int Cancoder_id = 0;
+      public static final Rotation2d turn_offset = Rotation2d.fromDegrees(0.0);
+
+    }
+
+  }
+
 
 
     public static final double max_speed = 0.0;
@@ -38,8 +106,9 @@ public final class Constants {
     public static final double driveki = 0.0;
     public static final double drivekd = 0.0;
 
+    public static class OperatorConstants {
+      public static final int kDriverControllerPort = 0;
+    }
   }
-  public static class OperatorConstants {
-    public static final int kDriverControllerPort = 0;
-  }
-}
+  
+

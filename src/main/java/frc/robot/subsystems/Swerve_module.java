@@ -40,7 +40,7 @@ public class Swerve_module {
     private final SparkMaxConfig drive_config;
     private final SparkMaxConfig turn_config;
 
-    public Swerve_module(int module_number, int drive_motor_ID, int turn_motor_ID, int cancoder_ID,
+    public Swerve_module(int module_number, int drive_id, int turn_motor_ID, int cancoder_ID,
             Rotation2d turn_offset) {
         this.turn_offset = turn_offset;
         this.drive_config = new SparkMaxConfig();
@@ -54,7 +54,7 @@ public class Swerve_module {
         this.best_turnEncoder.configAbsoluteSensorRange(range); // sets the range of the encoder
 
         // drive motors stuff
-        this.drive_motor = new SparkMax(drive_motor_ID, MotorType.kBrushless); // defines drive motor
+        this.drive_motor = new SparkMax(drive_id, MotorType.kBrushless); // defines drive motor
         this.drive_encoder = this.drive_motor.getEncoder(); // gerts the encoder fomr the dirve motor
 
         drive_config
@@ -63,13 +63,13 @@ public class Swerve_module {
                 .idleMode(IdleMode.kBrake)
                 .inverted(false);
         drive_config.encoder // configs for encoder
-                .positionConversionFactor(Constants.dt.position_conversion_factor)
-                .velocityConversionFactor(Constants.dt.velocity_conversion_factor);
+                .positionConversionFactor(Constants.position_conversion_factor)
+                .velocityConversionFactor(Constants.velocity_conversion_factor);
         // sets the current limit to 40 amps
 
         this.drive_motor.configure(turn_config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
 
-        drive_PID = new PIDController(Constants.dt.drivekp, Constants.dt.driveki, Constants.dt.drivekd); //
+        drive_PID = new PIDController(Constants.drivekp, Constants.driveki, Constants.drivekd); //
 
         // turn motor stuff
         turn_motor = new SparkMax(turn_motor_ID, MotorType.kBrushless); // defines turn motor
@@ -90,7 +90,7 @@ public class Swerve_module {
 
         this.turn_motor.configure(turn_config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
 
-        turn_PID = new PIDController(Constants.dt.turnKP, Constants.dt.turnKI, Constants.dt.turnKD);
+        turn_PID = new PIDController(Constants.turnKP, Constants.turnKI, Constants.turnKD);
 
     }
 
@@ -132,7 +132,7 @@ public class Swerve_module {
             turn_speed = turn_PID.calculate(diff, 0);
         }
 
-        drive_speed = desiredState.speedMetersPerSecond / Constants.dt.max_speed;
+        drive_speed = desiredState.speedMetersPerSecond / Constants.max_speed;
 
         turn_motor.set(turn_speed); // sets the turn speed
         drive_motor.set(drive_speed); // sets the drive speed
