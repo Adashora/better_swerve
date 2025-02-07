@@ -106,6 +106,13 @@ public static final double max_angular_speed = 0.0;
     public static final double driveki = 0.0;
     public static final double drivekd = 0.0;
 
+    public static class vision{
+
+      public static final double vision_p = 0.0;
+      public static final double vision_i = 0.0;
+      public static final double vision_d = 0.0;
+    }
+
     public static class OperatorConstants {
       public static final int kDriverControllerPort = 0;
     }
