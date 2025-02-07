@@ -23,7 +23,7 @@ import frc.robot.Constants;
 public class Swerve_module {
     public SparkMax drive_motor;
     public SparkMax turn_motor; // defining variables
-    public double module_number;
+    public int module_number;
 
     public double turn_speed;
     public double drive_speed;
@@ -105,7 +105,7 @@ public class Swerve_module {
         return new SwerveModuleState(speedMetersPerSecond, angle);
     }
 
-    public void setDesiredState(SwerveModuleState desiredState) { // sets the desired state of the module
+    public void set_desired_state(SwerveModuleState desiredState) { // sets the desired state of the module
         SwerveModuleState current_state = this.getState();
 
         Rotation2d current_rotation = current_state.angle.minus(this.turn_offset).plus(new Rotation2d()); /* gets the

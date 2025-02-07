@@ -57,7 +57,7 @@ public static final SwerveDriveKinematics Swerve_map = new SwerveDriveKinematics
 
     }
     public class Module_1{
-      public static final int module_number = 1;
+      //public static final int module_number = 1;
       public static final int drive_id = 0;
       public static final int turn_id = 0;
       public static final int Cancoder_id = 0;
@@ -65,7 +65,7 @@ public static final SwerveDriveKinematics Swerve_map = new SwerveDriveKinematics
 
     }
     public class Module_2{
-      public static final int module_number = 2;
+     // public static final int module_number = 2;
       public static final int drive_id = 0;
       public static final int turn_id = 1;
       public static final int Cancoder_id = 0;
@@ -74,7 +74,7 @@ public static final SwerveDriveKinematics Swerve_map = new SwerveDriveKinematics
     }
     public class Module_3{
       
-      public static final int module_number = 3;
+     // public static final int module_number = 3;
       public static final int drive_id = 0;
       public static final int turn_id = 0;
       public static final int Cancoder_id = 0;
@@ -84,7 +84,7 @@ public static final SwerveDriveKinematics Swerve_map = new SwerveDriveKinematics
 
   }
 
-
+public static final double max_angular_speed = 0.0;
 
     public static final double max_speed = 0.0;
     public static final double position_conversion_factor = 0.0;
