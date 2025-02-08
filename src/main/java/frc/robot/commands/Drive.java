@@ -20,9 +20,9 @@ Translation2d trans;
   Joystick joystickL;
 
   double x;
-  double y;
+  double y; 
 
-  SlewRateLimiter xSpeedLimiter = new SlewRateLimiter(3);
+  SlewRateLimiter xSpeedLimiter = new SlewRateLimiter(3); // speed liimits for x y and rotation
   SlewRateLimiter ySpeedLimiter = new SlewRateLimiter(3);
   SlewRateLimiter rotSpeedLimiter = new SlewRateLimiter(3);
   /** Creates a new Drive. */
@@ -37,12 +37,14 @@ Translation2d trans;
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    double y = xSpeedLimiter.calculate(MathUtil.applyDeadband(this.joystickL.getX(), 0.1));
-
+    
+    double y = xSpeedLimiter.calculate(MathUtil.applyDeadband(this.joystickL.getX(), 0.1)); //applies 0.1 deadband to the joysticks
     double x = xSpeedLimiter.calculate(MathUtil.applyDeadband(this.joystickR.getX(), 0.1));
     double rot = rotSpeedLimiter.calculate(MathUtil.applyDeadband(this.joystickR.getY(), 0.1));
 
-    this.trans = new Translation2d(x,y).times(Constants.max_speed);
+    this.trans = new Translation2d(x,y).times(Constants.max_speed);  //makes sure its not supa supa speedy
+
+    this.drivetrain.drive(trans, rot, true);
   }
 
   // Called once the command ends or is interrupted.
