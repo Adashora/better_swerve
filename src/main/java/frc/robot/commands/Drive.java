@@ -44,7 +44,7 @@ Translation2d trans;
 
     this.trans = new Translation2d(x,y).times(Constants.max_speed);  //makes sure its not supa supa speedy
 
-    this.drivetrain.drive(trans, rot, true);
+    this.drivetrain.drive(trans, rot, true); //DRIVE!!!! 👹👹
   }
 
   // Called once the command ends or is interrupted.
