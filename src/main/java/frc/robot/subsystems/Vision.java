@@ -36,7 +36,7 @@ public class Vision extends SubsystemBase {
       this.vision_PID = new PIDController(Constants.vision.vision_p, Constants.vision.vision_i, Constants.vision.vision_d);
       
       double x = tx.getDouble(0.0);
-      double y = ty.getDouble(0.0);  //ask matthew why this isnt in periodic
+      double y = ty.getDouble(0.0);  
       double area = ta.getDouble(0.0);
   
 
