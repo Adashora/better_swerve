@@ -14,13 +14,13 @@ import frc.robot.subsystems.Drivetrain;
 
 /* You should consider using the more terse Command factories API instead https://docs.wpilib.org/en/stable/docs/software/commandbased/organizing-command-based.html#defining-commands */
 public class Drive extends Command {
-Translation2d trans;
+  Translation2d trans;
   Drivetrain drivetrain;
   Joystick joystickR;
   Joystick joystickL;
 
-  double x;
-  double y; 
+  double dtx;
+  double dty; 
 
   SlewRateLimiter xSpeedLimiter = new SlewRateLimiter(3); // speed liimits for x y and rotation
   SlewRateLimiter ySpeedLimiter = new SlewRateLimiter(3);
@@ -38,13 +38,13 @@ Translation2d trans;
   @Override
   public void execute() {
     
-    double y = xSpeedLimiter.calculate(MathUtil.applyDeadband(this.joystickL.getX(), 0.1)); //applies 0.1 deadband to the joysticks
-    double x = xSpeedLimiter.calculate(MathUtil.applyDeadband(this.joystickR.getX(), 0.1));
+    dtx = -xSpeedLimiter.calculate(MathUtil.applyDeadband(this.joystickL.getY(), 0.1)); //applies 0.1 deadband to the joysticks
+    dty = -xSpeedLimiter.calculate(MathUtil.applyDeadband(this.joystickR.getX(), 0.1));
     double rot = rotSpeedLimiter.calculate(MathUtil.applyDeadband(this.joystickR.getY(), 0.1));
 
-    this.trans = new Translation2d(x,y).times(Constants.max_speed);  //makes sure its not supa supa speedy
+    this.trans = new Translation2d(dtx, dty).times(Constants.max_speed);  //makes sure its not supa supa speedy
 
-    this.drivetrain.drive(trans, rot, true); //DRIVE!!!! 👹👹
+    this.drivetrain.drive(this.trans, rot, true); //DRIVE!!!! 👹👹
   }
 
   // Called once the command ends or is interrupted.

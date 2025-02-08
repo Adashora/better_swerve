@@ -49,60 +49,63 @@ public static final SwerveDriveKinematics Swerve_map = new SwerveDriveKinematics
 
     public class Module_0{
       
-      public static final int module_number = 0;
-      public static final int drive_id = 0;
-      public static final int turn_id = 0;
-      public static final int Cancoder_id = 0;
-      public static final Rotation2d turn_offset = Rotation2d.fromDegrees(0);
+      public static final int drive_id = 54;
+      public static final int turn_id = 58;
+      public static final int Cancoder_id = 8;
+      public static final Rotation2d turn_offset = Rotation2d.fromDegrees(339.3);
 
     }
     public class Module_1{
       //public static final int module_number = 1;
-      public static final int drive_id = 0;
-      public static final int turn_id = 0;
-      public static final int Cancoder_id = 0;
-      public static final Rotation2d turn_offset = Rotation2d.fromDegrees(0);
+      public static final int drive_id = 36;
+      public static final int turn_id = 52;
+      public static final int Cancoder_id = 1;
+      public static final Rotation2d turn_offset = Rotation2d.fromDegrees(187.3);
 
     }
     public class Module_2{
      // public static final int module_number = 2;
-      public static final int drive_id = 0;
-      public static final int turn_id = 1;
-      public static final int Cancoder_id = 0;
+      public static final int drive_id = 53;
+      public static final int turn_id = 61;
+      public static final int Cancoder_id = 1;
       public static final Rotation2d turn_offset = Rotation2d.fromDegrees(0.0);
 
     }
     public class Module_3{
       
      // public static final int module_number = 3;
-      public static final int drive_id = 0;
-      public static final int turn_id = 0;
-      public static final int Cancoder_id = 0;
+      public static final int drive_id = 55;
+      public static final int turn_id = 59;
+      public static final int Cancoder_id = 3;
       public static final Rotation2d turn_offset = Rotation2d.fromDegrees(0.0);
 
     }
 
   }
 
-public static final double max_angular_speed = 0.0;
+  public static final double max_angular_speed = 7.0;
 
-    public static final double max_speed = 0.0;
-    public static final double position_conversion_factor = 0.0;
-    public static final double velocity_conversion_factor = 0.0;
+  public static final double drive_motor_ratio = 6.12;
+  public static final double encoder_tick_ratio = 42;
+  public static final double turn_motor_ratio = 150/7;
 
 
-    int turn_constant = 0; //ask matthew about this
+
+    public static final double max_speed = 5;
+    public static final double position_conversion_factor = Units.feetToMeters(4* Math.PI / (encoder_tick_ratio * drive_motor_ratio));
+    public static final double velocity_conversion_factor = position_conversion_factor / 60;
+
 
 
 
 
     //turn PID
-    public static final double turnKP = 0.0;
-    public static final double turnKI = 0.0;
-    public static final double turnKD = 0.0;
+    public static final double turnKP = 0.00759;
+    public static final double turnKI = 0.00069;
+    public static final double turnKD = 0.0001;
 
     //driev pid
-    public static final double drivekp = 0.0;
+    public static final double drivekp = 0.002;
     public static final double driveki = 0.0;
     public static final double drivekd = 0.0;
 

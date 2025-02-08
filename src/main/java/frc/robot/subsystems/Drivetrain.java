@@ -23,7 +23,6 @@ public class Drivetrain extends SubsystemBase {
   /** Creates a new Drivetrain. */
   public Drivetrain() {
 
-    set_gyro(0);
 
     this.hehe = new Swerve_module[] { // sets up the swerve module instances in an array
 
@@ -40,6 +39,8 @@ public class Drivetrain extends SubsystemBase {
     gyro = new PigeonIMU(10); // defines gyro
 
     gyro.configFactoryDefault(); // gyro config
+
+    set_gyro(0);
 
   }
 

@@ -78,15 +78,15 @@ public class Swerve_module {
         best_turnEncoder.configAbsoluteSensorRange(range);
 
         turn_config
-                .voltageCompensation(12)
-                .smartCurrentLimit(20) // limits the current to 20 amps
-                .idleMode(IdleMode.kBrake)
-                .inverted(false);
+            .voltageCompensation(12)
+            .smartCurrentLimit(20) // limits the current to 20 amps
+            .idleMode(IdleMode.kBrake)
+            .inverted(false);
         turn_config.encoder
-                .positionConversionFactor(360) // converts the position to degrees
-                .velocityConversionFactor(360 / 60); // converts the velocity to degrees per second
+            .positionConversionFactor(360) // converts the position to degrees
+            .velocityConversionFactor(360 / 60); // converts the velocity to degrees per second
         turn_config.signals
-                .primaryEncoderPositionPeriodMs(500); // sets the update period of the encoder to 500 ms
+            .primaryEncoderPositionPeriodMs(500); // sets the update period of the encoder to 500 ms
 
         this.turn_motor.configure(turn_config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
 
