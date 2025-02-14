@@ -6,6 +6,7 @@ package frc.robot;
 
 import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.Autos;
+import frc.robot.commands.Drive;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.ExampleSubsystem;
@@ -29,10 +30,11 @@ public class RobotContainer {
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
   private final Drivetrain dt = new Drivetrain();
 
-  private final Joystick joystickR = new Joystick(0);
-  private final Joystick joystickL = new Joystick(1);
 
-  private final JoystickButton vis_button = new JoystickButton(joystickL, 1);
+  private final Joystick joystickR = new Joystick(1);
+  private final Joystick joystickL = new Joystick(0);
+
+  //private final JoystickButton vis_button = new JoystickButton(joystickL, 1);
 
 
   // Replace with CommandPS4Controller or CommandJoystick if needed
@@ -44,6 +46,7 @@ public class RobotContainer {
    */
   public RobotContainer() {
     // Configure the trigger bindings
+    dt.setDefaultCommand(new Drive(dt, joystickR, joystickL));
     configureBindings();
   }
 
