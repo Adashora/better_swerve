@@ -15,7 +15,7 @@ import frc.robot.subsystems.Drivetrain;
 /* You should consider using the more terse Command factories API instead https://docs.wpilib.org/en/stable/docs/software/commandbased/organizing-command-based.html#defining-commands */
 public class Drive extends Command {
   Translation2d trans;
-  Drivetrain drivetrain;
+  Drivetrain dt;
   Joystick joystickR;
   Joystick joystickL;
 
@@ -26,8 +26,12 @@ public class Drive extends Command {
   SlewRateLimiter ySpeedLimiter = new SlewRateLimiter(3);
   SlewRateLimiter rotSpeedLimiter = new SlewRateLimiter(3);
   /** Creates a new Drive. */
-  public Drive() {
+  public Drive(Drivetrain dt, Joystick joystickR, Joystick joystickL) {
     // Use addRequirements() here to declare subsystem dependencies.
+    this.dt = dt;
+    this.joystickR = joystickR;
+    this.joystickL = joystickL;
+    addRequirements(this.dt);
   }
 
   // Called when the command is initially scheduled.
@@ -39,12 +43,12 @@ public class Drive extends Command {
   public void execute() {
     
     dtx = -xSpeedLimiter.calculate(MathUtil.applyDeadband(this.joystickL.getY(), 0.1)); //applies 0.1 deadband to the joysticks
-    dty = -xSpeedLimiter.calculate(MathUtil.applyDeadband(this.joystickR.getX(), 0.1));
-    double rot = rotSpeedLimiter.calculate(MathUtil.applyDeadband(this.joystickR.getY(), 0.1));
+    dty = -xSpeedLimiter.calculate(MathUtil.applyDeadband(this.joystickL.getX(), 0.1));
+    double rot = rotSpeedLimiter.calculate(MathUtil.applyDeadband(this.joystickR.getX(), 0.1)) * Constants.max_angular_speed;
 
-    this.trans = new Translation2d(dtx, dty).times(Constants.max_speed);  //makes sure its not supa supa speedy
+    trans = new Translation2d(dtx, dty).times(Constants.max_speed);  //makes sure its not supa supa speedy
 
-    this.drivetrain.drive(this.trans, rot, true); //DRIVE!!!! 👹👹
+    this.dt.drive(trans, rot, true); //DRIVE!!!! 👹👹
   }
 
   // Called once the command ends or is interrupted.

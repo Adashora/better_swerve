@@ -67,8 +67,8 @@ public static final SwerveDriveKinematics Swerve_map = new SwerveDriveKinematics
      // public static final int module_number = 2;
       public static final int drive_id = 53;
       public static final int turn_id = 61;
-      public static final int Cancoder_id = 1;
-      public static final Rotation2d turn_offset = Rotation2d.fromDegrees(0.0);
+      public static final int Cancoder_id = 2;
+      public static final Rotation2d turn_offset = Rotation2d.fromDegrees(166.1);
 
     }
     public class Module_3{
@@ -77,7 +77,7 @@ public static final SwerveDriveKinematics Swerve_map = new SwerveDriveKinematics
       public static final int drive_id = 55;
       public static final int turn_id = 59;
       public static final int Cancoder_id = 3;
-      public static final Rotation2d turn_offset = Rotation2d.fromDegrees(0.0);
+      public static final Rotation2d turn_offset = Rotation2d.fromDegrees(148.2);
 
     }
 
@@ -94,7 +94,7 @@ public static final SwerveDriveKinematics Swerve_map = new SwerveDriveKinematics
     public static final double max_speed = 5;
     public static final double position_conversion_factor = Units.feetToMeters(4* Math.PI / (encoder_tick_ratio * drive_motor_ratio));
     public static final double velocity_conversion_factor = position_conversion_factor / 60;
-
+    public static final double turn_pos_factor = 360/ turn_motor_ratio;
 
 
 

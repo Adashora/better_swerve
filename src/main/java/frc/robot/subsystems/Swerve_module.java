@@ -17,6 +17,7 @@ import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Constants;
 
 /** Add your docs here. */
@@ -83,8 +84,7 @@ public class Swerve_module {
             .idleMode(IdleMode.kBrake)
             .inverted(false);
         turn_config.encoder
-            .positionConversionFactor(360) // converts the position to degrees
-            .velocityConversionFactor(360 / 60); // converts the velocity to degrees per second
+            .positionConversionFactor(Constants.turn_pos_factor); // converts the position to degrees
         turn_config.signals
             .primaryEncoderPositionPeriodMs(500); // sets the update period of the encoder to 500 ms
 
@@ -96,6 +96,7 @@ public class Swerve_module {
 
     public Rotation2d getCANCoder() { // gets the angle of the cancoder
         double angle = this.best_turnEncoder.getAbsolutePosition();
+        SmartDashboard.putNumber("Cancoder angel" + this.module_number, angle);
         return Rotation2d.fromDegrees(angle);
     }
 
@@ -136,7 +137,8 @@ public class Swerve_module {
 
         turn_motor.set(turn_speed); // sets the turn speed
         drive_motor.set(drive_speed); // sets the drive speed
-
+        SmartDashboard.putNumber("Desired rotaiton" + this.module_number, desired_rotation.getDegrees());
+        SmartDashboard.putNumber("Current Rotation" + this.module_number, current_rotation.getDegrees());
     }
 
 }
