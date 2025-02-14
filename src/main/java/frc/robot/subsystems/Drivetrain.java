@@ -26,13 +26,13 @@ public class Drivetrain extends SubsystemBase {
 
     this.hehe = new Swerve_module[] { // sets up the swerve module instances in an array
 
-        new Swerve_module(0, Constants.dt.Module_0.drive_id, Constants.dt.Module_0.turn_id, 0,
+        new Swerve_module(0, Constants.dt.Module_0.drive_id, Constants.dt.Module_0.turn_id, Constants.dt.Module_0.Cancoder_id,
             Constants.dt.Module_0.turn_offset),
-        new Swerve_module(1, Constants.dt.Module_1.drive_id, Constants.dt.Module_1.turn_id, 0,
+        new Swerve_module(1, Constants.dt.Module_1.drive_id, Constants.dt.Module_1.turn_id, Constants.dt.Module_1.Cancoder_id,
             Constants.dt.Module_1.turn_offset),
-        new Swerve_module(2, Constants.dt.Module_2.drive_id, Constants.dt.Module_2.turn_id, 0,
+        new Swerve_module(2, Constants.dt.Module_2.drive_id, Constants.dt.Module_2.turn_id, Constants.dt.Module_2.Cancoder_id,
             Constants.dt.Module_2.turn_offset),
-        new Swerve_module(3, Constants.dt.Module_3.drive_id, Constants.dt.Module_3.turn_id, 0,
+        new Swerve_module(3, Constants.dt.Module_3.drive_id, Constants.dt.Module_3.turn_id, Constants.dt.Module_3.Cancoder_id,
             Constants.dt.Module_3.turn_offset)
     };
 
