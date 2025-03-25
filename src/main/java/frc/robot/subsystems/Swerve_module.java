@@ -84,7 +84,7 @@ public class Swerve_module {
             .idleMode(IdleMode.kBrake)
             .inverted(false);
         turn_config.encoder
-            .positionConversionFactor(Constants.turn_pos_factor); // converts the position to degrees
+            .positionConversionFactor(Constants.turn_pos_conversion_factor); // converts the position to degrees
         turn_config.signals
             .primaryEncoderPositionPeriodMs(500); // sets the update period of the encoder to 500 ms
 
