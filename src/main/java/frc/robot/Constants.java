@@ -34,10 +34,10 @@ public static final Translation2d back_left =  new Translation2d(-robot_length/2
 
 
 public static final SwerveDriveKinematics Swerve_map = new SwerveDriveKinematics(
+  front_left,
   front_right,
   back_right,
-  back_left,
-  front_left
+  back_left
  );
 
 
@@ -51,32 +51,32 @@ public static final SwerveDriveKinematics Swerve_map = new SwerveDriveKinematics
       
       public static final int drive_id = 54;
       public static final int turn_id = 58;
-      public static final int Cancoder_id = 8;
+      public static final int Cancoder_id = 1;
       public static final Rotation2d turn_offset = Rotation2d.fromDegrees(339.3);
 
     }
     public class Module_1{
       //public static final int module_number = 1;
       public static final int drive_id = 36;
-      public static final int turn_id = 52;
-      public static final int Cancoder_id = 1;
+      public static final int turn_id = 61;
+      public static final int Cancoder_id = 2;
       public static final Rotation2d turn_offset = Rotation2d.fromDegrees(187.3);
 
     }
     public class Module_2{
      // public static final int module_number = 2;
       public static final int drive_id = 53;
-      public static final int turn_id = 61;
-      public static final int Cancoder_id = 2;
+      public static final int turn_id = 52;
+      public static final int Cancoder_id = 3;
       public static final Rotation2d turn_offset = Rotation2d.fromDegrees(166.1);
 
     }
     public class Module_3{
       
      // public static final int module_number = 3;
-      public static final int drive_id = 55;
-      public static final int turn_id = 59;
-      public static final int Cancoder_id = 3;
+      public static final int drive_id = 59;
+      public static final int turn_id = 55;
+      public static final int Cancoder_id = 8;
       public static final Rotation2d turn_offset = Rotation2d.fromDegrees(148.2);
 
     }

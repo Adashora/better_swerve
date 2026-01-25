@@ -136,7 +136,7 @@ public class Swerve_module {
         drive_speed = desiredState.speedMetersPerSecond / Constants.max_speed;
 
         turn_motor.set(turn_speed); // sets the turn speed
-        drive_motor.set(drive_speed); // sets the drive speed
+        drive_motor.set(drive_speed * 0.25); // sets the drive speed
         SmartDashboard.putNumber("Desired rotaiton" + this.module_number, desired_rotation.getDegrees());
         SmartDashboard.putNumber("Current Rotation" + this.module_number, current_rotation.getDegrees());
     }
